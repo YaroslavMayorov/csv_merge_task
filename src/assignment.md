@@ -17,10 +17,12 @@ key,field1,field2
 
 To work with CSV in Python you need the built-in csv module. There are some basic tools with common used arguments:
 
-- `csv.reader(file, delimiter=',')` creates a reader object that reads the file row by row.  
+- `csv.reader(file, delimiter=',')` creates a reader object that reads the file row by row.
+
 ```python
 import csv
-with open("file1.csv", newline='') as f:
+
+with open("data/file1.csv", newline='') as f:
   reader = csv.reader(f, delimiter=",")
   rows = list(reader)
   ```
@@ -33,13 +35,15 @@ with open("out.csv", "w", newline='') as f:
     writer.writerow(["a", "b", "c"])
   ```
 
-- `csv.DictReader(file, delimiter=',')` reads rows into dictionaries; keys for the dictionary are taken from the first row (header) of the file. 
+- `csv.DictReader(file, delimiter=',')` reads rows into dictionaries; keys for the dictionary are taken from the first row (header) of the file.
+
 ```python
 import csv
-with open("file1.csv", newline='') as f:
-    reader = csv.DictReader(f, delimiter=";")
-    for row in reader:
-        print(row["field1"])
+
+with open("data/file1.csv", newline='') as f:
+  reader = csv.DictReader(f, delimiter=";")
+  for row in reader:
+    print(row["field1"])
 ```
 
 - `csv.DictWriter(file, fieldnames, delimiter=',')` writes dictionaries into a CSV file, matching keys to column names.

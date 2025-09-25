@@ -4,22 +4,23 @@ import tempfile
 import unittest
 import argparse
 import sys
-from wrong_solution import merge_csv as wrong_merge_csv
-from solution import merge_csv
+from src.wrong_solution import merge_csv as wrong_merge_csv
+from src.solution import merge_csv
 
 
 class TestMergeCsv(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.file1 = os.path.abspath("file1.csv")
-        cls.file2 = os.path.abspath("file2.csv")
+        BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        cls.file1 = os.path.join(BASE_DIR, "src", "data", "file1.csv")
+        cls.file2 = os.path.join(BASE_DIR, "src", "data", "file2.csv")
         cls.tmpdir = tempfile.TemporaryDirectory()
         cls.out = os.path.join(cls.tmpdir.name, "result.csv")
 
-        if FILENAME == "wrong_solution.py":
-            func = wrong_merge_csv
-        else:
+        if FILENAME == "src/solution.py":
             func = merge_csv
+        else:
+            func = wrong_merge_csv
 
         func(cls.file1, cls.file2, cls.out, key="key")
 
