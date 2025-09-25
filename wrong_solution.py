@@ -22,8 +22,8 @@ def merge_csv(file1_path, file2_path, result_path, key):
         common_keys = set(idx1.keys()) | set(idx2.keys())
 
         for k in common_keys:
-            row1 = idx1[k]
-            row2 = idx2[k]
+            row1 = idx1.get(k, {})
+            row2 = idx2.get(k, {})
             out_row = {key: k}
 
             for c in h1:
