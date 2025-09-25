@@ -35,13 +35,13 @@ The goal of the assignment is to teach learners how to merge two CSV files by a 
 2. **Run tests against the reference solution**
 
     ```bash
-   python tests/test.py src/solution.py -v
+   python3 -m tests.test src/solution.py -v
    ```
 
 3. **Run tests against the wrong solution**
 
     ```bash
-    python tests/test.py src/wrong_solution.py -v
+    python3 -m tests.test src/wrong_solution.py -v
     ```
 
 ---
