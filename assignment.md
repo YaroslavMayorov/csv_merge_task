@@ -98,8 +98,8 @@ key,field1,field2,field3
 - Only rows that appear in both files (by `key`) should be written to the result (this is called an *inner join*).
 
 <details><summary> Hint 1</summary> Use <code>csv.DictReader</code> to read rows as dictionaries. </details>
-<details><summary> Hint 2</summary> </details>
-<details><summary> Hint 3</summary> </details>
+<details><summary> Hint 2</summary> You can store each row in a dictionary using its key to find matching rows. </details>
+<details><summary> Hint 3</summary> Use <code>csv.DictWriter</code> to save merged dictionary. </details>
 
 
 

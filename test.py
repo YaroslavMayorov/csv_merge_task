@@ -2,8 +2,10 @@ import csv
 import os
 import tempfile
 import unittest
-
-from wrong_solution import merge_csv
+import argparse
+import sys
+from wrong_solution import merge_csv as wrong_merge_csv
+from solution import merge_csv
 
 
 class TestMergeCsv(unittest.TestCase):
@@ -14,7 +16,12 @@ class TestMergeCsv(unittest.TestCase):
         cls.tmpdir = tempfile.TemporaryDirectory()
         cls.out = os.path.join(cls.tmpdir.name, "result.csv")
 
-        merge_csv(cls.file1, cls.file2, cls.out, key="key")
+        if FILENAME == "wrong_solution.py":
+            func = wrong_merge_csv
+        else:
+            func = merge_csv
+
+        func(cls.file1, cls.file2, cls.out, key="key")
 
         with open(cls.out, "r", newline="") as f:
             dreader = csv.DictReader(f)
@@ -58,3 +65,10 @@ class TestMergeCsv(unittest.TestCase):
                 f"Mismatch for key={key}, field={field}: expected '{expected}', got '{actual}'"
             )
 
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename")
+    args, remaining = parser.parse_known_args()
+    FILENAME = args.filename
+    unittest.main(argv=[sys.argv[0]] + remaining, verbosity=2)
