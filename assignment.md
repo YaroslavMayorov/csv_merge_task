@@ -43,6 +43,7 @@ with open("file1.csv", newline='') as f:
 ```
 
 - `csv.DictWriter(file, fieldnames, delimiter=',')` writes dictionaries into a CSV file, matching keys to column names.
+  
   `fieldnames` – a list of column names (must be specified).
   
 ```python
@@ -63,9 +64,10 @@ You are given two CSV files, both sharing **only** a column named `key`.
 **file1.csv**  
 ```text
 key,field1,field2  
-1,f11,f12  
+1,f11,f12
+3,f31,f32  
 2,f21,f22  
-3,f31,f32
+4,f41,f42
 ```
 
 **file2.csv** 
@@ -74,16 +76,17 @@ key,field3
 1,f13  
 2,f23  
 3,f33
+5,f53
 ```
 
-Your goal is to write a function `merge_csv(file1_path, file2_path, result_path, key)` that creates a new CSV file by merging the two tables: the result must contain all columns from both files in the header, and rows are combined where they share the same `key`.
+Your goal is to write a function `merge_csv(file1_path, file2_path, result_path, key)` that creates a new CSV file by merging the two tables: the result must contain all columns from both files in the header, and rows must be combined where they share the same `key`.
 
 **result.csv**  
 ```text
 key,field1,field2,field3  
-1,f11,f12,f13  
+1,f11,f12,f13
+3,f31,f32,f33  
 2,f21,f22,f23  
-3,f31,f32,f33
 ```
 
 **Rules:**
